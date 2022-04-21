@@ -15,5 +15,5 @@ MonoBehaviour:
   myName: Slime
   maxHealth: 30
   currentHealth: 30
-  baseDefence: 1
-  currentDefence: 1
+  baseDefence: 0
+  currentDefence: 0

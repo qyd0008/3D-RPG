@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public enum EnemyStates { GUARD, PATROL, CHASE, DEAD }
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(CharacterStats))]
 public class EnemyController : MonoBehaviour, IEndGameObserver
 {
     private EnemyStates enemyStates;
@@ -22,6 +23,8 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     private float remainLookAtTime;//用来减减的
     private float lastAttackTime;//cd时间 用来记录上次攻击
     private Quaternion guardRotation;//本身得角度 朝向
+    private float checkErrorTime;//检测巡逻出现异常
+    private float remainCheckErrorTime;//用来减减的
 
     [Header("Patrol State")]
     public float patrolRange;
@@ -45,6 +48,9 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
         guardPos = transform.position;
         guardRotation = transform.rotation;
         remainLookAtTime = lookAtTime;
+        checkErrorTime = sightRadius*2 / speed;
+        Debug.Log("checkErrorTime=" + checkErrorTime);
+        remainCheckErrorTime = checkErrorTime;
     }
 
     void Start()
@@ -58,16 +64,19 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
             enemyStates = EnemyStates.PATROL;
             GetNewWayPoint();
         }
-    }
 
-    void OnEnable()
-    {
         GameManager.Instance.AddObservers(this);
     }
 
+    // void OnEnable()
+    // {
+    //     GameManager.Instance.AddObservers(this);
+    // }
+
     void OnDisable()
     {
-        GameManager.Instance.RemoveObservers(this);
+        if (GameManager.isInitialized)
+            GameManager.Instance.RemoveObservers(this);
     }
 
     void Update()
@@ -142,6 +151,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
                 {
                     isWalk = false;
                     anim.SetBool("Search", true);
+                    remainCheckErrorTime = checkErrorTime;
                     if (remainLookAtTime > 0)
                     {
                         remainLookAtTime -= Time.deltaTime;
@@ -156,6 +166,14 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
                     isWalk = true;
                     anim.SetBool("Search", false);
                     agent.destination = wayPoint;
+
+                    //如果巡逻出现异常 那么获取新的目标点去移动
+                    remainCheckErrorTime -= Time.deltaTime;
+                    if (remainCheckErrorTime < 0)
+                    {
+                        GetNewWayPoint();
+                        remainCheckErrorTime = checkErrorTime;
+                    }
                 }
 
                 break;
@@ -306,6 +324,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
         //停止所有移动
         //停止Agent
         anim.SetBool("Win", true);
+        anim.SetBool("Search", false);
         isChase = false;
         isWalk = false;
         attackTarget = null;

@@ -113,7 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 226a96183d39f85498bc87e831d45d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyName: Slime
   sightRadius: 4
   isGuard: 0
   lookAtTime: 3
@@ -152,7 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cc7a05ee81ede14f9c96583a7f04d54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterData: {fileID: 11400000, guid: 443e410d599f47740af8b86b109bb8aa, type: 2}
+  templateData: {fileID: 11400000, guid: 443e410d599f47740af8b86b109bb8aa, type: 2}
+  characterData: {fileID: 0}
   attackData: {fileID: 11400000, guid: b00a076215d4551459db46be913e953f, type: 2}
   isCritical: 0
 --- !u!1 &839154574888680972

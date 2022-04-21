@@ -5,11 +5,18 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
+    public CharacterData_SO templateData;
     public CharacterData_SO characterData;
     public AttackData_SO attackData;
 
     [HideInInspector]
     public bool isCritical;
+
+    void Awake()
+    {
+        if (templateData != null)
+            characterData = Instantiate(templateData);
+    }
 
     #region Read From Data_SO
     public string MyName
@@ -204,9 +211,10 @@ public class CharacterStats : MonoBehaviour
         //如果暴击了 防御者要播放hit受击动画
         if (isCritical)
         {
-            Debug.Log(attacker.MyName + "触发暴击，暴击伤害:" + currentDamage + ",敌人防御：" + defener.CurrentDefence + ",实际造成伤害：" + damage);
             defener.GetComponent<Animator>().SetTrigger("Hit");
         }
+        Debug.Log(attacker.MyName + "发起攻击，伤害为:" + currentDamage + ",受击者" + defener.MyName + "防御：" + defener.CurrentDefence + ",实际造成伤害：" + damage);
+        Debug.Log(",受击者" + defener.MyName + "剩余血量：" + defener.CurrentHealth);
         //TODO: update ui
         //TODO: update exp
     }
