@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 1021996333320395378}
   - component: {fileID: 8559022968373330163}
   - component: {fileID: 3394255380821493139}
+  - component: {fileID: 505560100}
   m_Layer: 0
   m_Name: Grunt
   m_TagString: Enemy
@@ -107,7 +108,7 @@ Animator:
   m_GameObject: {fileID: 1021996333138442162}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: eb5e3fc8d0caf3945a6effdb6372a9c7, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5065c6cf1c398cc4f89afceab4f0e2e5, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -167,6 +168,23 @@ MonoBehaviour:
   characterData: {fileID: 0}
   attackData: {fileID: 11400000, guid: 70871b03d26febc458b290b50140eacb, type: 2}
   isCritical: 0
+--- !u!114 &505560100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021996333138442162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6fab2582e0d7c4ba8fe6e7f77e0bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sightRadius: 4
+  isGuard: 0
+  lookAtTime: 3
+  patrolRange: 4
+  kickForce: 10
 --- !u!1 &1021996333278606783
 GameObject:
   m_ObjectHideFlags: 0
