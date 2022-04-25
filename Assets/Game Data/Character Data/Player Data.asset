@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player Data
   m_EditorClassIdentifier: 
   myName: DogKnight
-  maxHealth: 200
-  currentHealth: 200
+  maxHealth: 300
+  currentHealth: 91
   baseDefence: 3
   currentDefence: 3

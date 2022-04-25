@@ -74,7 +74,6 @@ GameObject:
   - component: {fileID: 1021996333320395378}
   - component: {fileID: 8559022968373330163}
   - component: {fileID: 3394255380821493139}
-  - component: {fileID: 4813645763469576995}
   m_Layer: 0
   m_Name: Grunt
   m_TagString: Enemy
@@ -168,22 +167,6 @@ MonoBehaviour:
   characterData: {fileID: 0}
   attackData: {fileID: 11400000, guid: 70871b03d26febc458b290b50140eacb, type: 2}
   isCritical: 0
---- !u!114 &4813645763469576995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1021996333138442162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 226a96183d39f85498bc87e831d45d4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sightRadius: 5
-  isGuard: 0
-  lookAtTime: 3
-  patrolRange: 5
 --- !u!1 &1021996333278606783
 GameObject:
   m_ObjectHideFlags: 0

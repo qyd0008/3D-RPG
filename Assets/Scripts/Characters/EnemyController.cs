@@ -18,7 +18,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     public float sightRadius;//视角范围，查找player用
     public bool isGuard;//是否是站桩敌人
     private float speed;
-    private GameObject attackTarget;
+    protected GameObject attackTarget;
     public float lookAtTime;//巡逻到目的地后停顿时间
     private float remainLookAtTime;//用来减减的
     private float lastAttackTime;//cd时间 用来记录上次攻击
@@ -237,7 +237,8 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
                 break;
             case EnemyStates.DEAD: //死亡
                 coll.enabled = false;
-                agent.enabled = false;
+                // agent.enabled = false;
+                agent.radius = 0;
                 Destroy(gameObject, 2f);
                 break;
         }
