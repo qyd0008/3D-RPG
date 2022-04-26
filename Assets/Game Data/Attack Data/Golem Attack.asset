@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdab18a5205555a48baff3306caeb4aa, type: 3}
   m_Name: Golem Attack
   m_EditorClassIdentifier: 
-  attackRange: 2
-  skillRange: 0
-  coolDown: 2
+  attackRange: 3.5
+  skillRange: 10
+  coolDown: 4
   minDamage: 12
   maxDamage: 16
   criticalMultiplier: 2

@@ -15,5 +15,5 @@ MonoBehaviour:
   myName: Golem
   maxHealth: 150
   currentHealth: 150
-  baseDefence: 10
-  currentDefence: 10
+  baseDefence: 8
+  currentDefence: 8

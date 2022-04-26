@@ -209,14 +209,24 @@ public class CharacterStats : MonoBehaviour
         defener.CurrentHealth = Mathf.Max(defener.CurrentHealth - damage, 0);
 
         //如果暴击了 防御者要播放hit受击动画
-        if (isCritical)
+        if (attacker.isCritical)
         {
             defener.GetComponent<Animator>().SetTrigger("Hit");
         }
         Debug.Log(attacker.MyName + "发起攻击，伤害为:" + currentDamage + ",受击者" + defener.MyName + "防御：" + defener.CurrentDefence + ",实际造成伤害：" + damage);
-        Debug.Log(",受击者" + defener.MyName + "剩余血量：" + defener.CurrentHealth);
+        Debug.Log("受击者" + defener.MyName + "剩余血量：" + defener.CurrentHealth);
         //TODO: update ui
         //TODO: update exp
+    }
+
+    public void TakeDamage(int damage, CharacterStats defener)
+    {
+        int currentDamage = Mathf.Max(damage - defener.CurrentDefence, 0);
+        defener.CurrentHealth = Mathf.Max(defener.CurrentHealth - currentDamage, 0);
+
+        Debug.Log("受到非怪物攻击 例如石头等，伤害为:" + damage + ",受击者" + defener.MyName + "防御：" + defener.CurrentDefence + ",实际造成伤害：" + currentDamage);
+        Debug.Log("受击者" + defener.MyName + "剩余血量：" + defener.CurrentHealth);
+
     }
 
     private int CurrentDamage()
