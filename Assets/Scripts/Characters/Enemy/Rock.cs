@@ -64,6 +64,8 @@ public class Rock : MonoBehaviour
                     otherStats.TakeDamage(damage,otherStats);
 
                     rockStates = RockStates.HitNothing;
+
+                    Destroy(gameObject,30);
                 }
                 break;
 
