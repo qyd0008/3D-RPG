@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 8559022968373330163}
   - component: {fileID: 3394255380821493139}
   - component: {fileID: 505560100}
+  - component: {fileID: 3804713763933471744}
   m_Layer: 0
   m_Name: Grunt
   m_TagString: Enemy
@@ -95,6 +96,7 @@ Transform:
   m_Children:
   - {fileID: 1021996334777285686}
   - {fileID: 1021996334628203435}
+  - {fileID: 4564161915779360416}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 100.62601, z: 0}
@@ -185,6 +187,23 @@ MonoBehaviour:
   lookAtTime: 3
   patrolRange: 4
   kickForce: 10
+--- !u!114 &3804713763933471744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021996333138442162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced5ccb4d55755340bb84e1dc0879ddd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthUIPrefab: {fileID: 8352267312753643491, guid: c377f2ef0a3b4ff42baad47a5132f449,
+    type: 3}
+  barPoint: {fileID: 4564161915779360416}
+  alwaysVisible: 1
+  visibleTime: 0
 --- !u!1 &1021996333278606783
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,4 +959,34 @@ Transform:
   - {fileID: 1021996334204860399}
   m_Father: {fileID: 1021996334717467979}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3623439762019574757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4564161915779360416}
+  m_Layer: 0
+  m_Name: HealthBar Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4564161915779360416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3623439762019574757}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1021996333138441292}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

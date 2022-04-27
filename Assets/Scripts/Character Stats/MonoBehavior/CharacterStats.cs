@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
+    public event Action<int,int> UpdateHealthBarOnAttack;
     public CharacterData_SO templateData;
     public CharacterData_SO characterData;
     public AttackData_SO attackData;
@@ -215,7 +216,9 @@ public class CharacterStats : MonoBehaviour
         }
         Debug.Log(attacker.MyName + "发起攻击，伤害为:" + currentDamage + ",受击者" + defener.MyName + "防御：" + defener.CurrentDefence + ",实际造成伤害：" + damage);
         Debug.Log("受击者" + defener.MyName + "剩余血量：" + defener.CurrentHealth);
-        //TODO: update ui
+
+        //update ui
+        defener.UpdateHealthBarOnAttack?.Invoke(defener.CurrentHealth,defener.MaxHealth);
         //TODO: update exp
     }
 
@@ -227,6 +230,8 @@ public class CharacterStats : MonoBehaviour
         Debug.Log("受到非怪物攻击 例如石头等，伤害为:" + damage + ",受击者" + defener.MyName + "防御：" + defener.CurrentDefence + ",实际造成伤害：" + currentDamage);
         Debug.Log("受击者" + defener.MyName + "剩余血量：" + defener.CurrentHealth);
 
+        // update ui
+        UpdateHealthBarOnAttack?.Invoke(defener.CurrentHealth,defener.MaxHealth);
     }
 
     private int CurrentDamage()
