@@ -6,6 +6,8 @@ using UnityEngine;
 public class CharacterStats : MonoBehaviour
 {
     public event Action<int,int> UpdateHealthBarOnAttack;
+    public event Action<int,int> UpdateExpBarOnAttack;
+    public event Action<int> UpdateLevelOnAttack;
     public CharacterData_SO templateData;
     public CharacterData_SO characterData;
     public AttackData_SO attackData;
@@ -90,6 +92,74 @@ public class CharacterStats : MonoBehaviour
             if (characterData != null)
                 characterData.currentDefence = value;
         }
+    }
+
+    public int KillPoint
+    {
+        get
+        {
+            if (characterData != null)
+                return characterData.killPoint;
+            return 0;
+        }
+        set
+        {
+            if (characterData != null)
+                characterData.killPoint = value;
+        }
+    }
+
+    public int CurrentLevel
+    {
+        get
+        {
+            if (characterData != null)
+                return characterData.currentLevel;
+            return 0;
+        }
+        set
+        {
+            if (characterData != null)
+                characterData.currentLevel = value;
+        }
+    }
+
+    public int BaseExp
+    {
+        get
+        {
+            if (characterData != null)
+                return characterData.baseExp;
+            return 0;
+        }
+        set
+        {
+            if (characterData != null)
+                characterData.baseExp = value;
+        }
+    }
+
+    public int CurrentExp
+    {
+        get
+        {
+            if (characterData != null)
+                return characterData.currentExp;
+            return 0;
+        }
+        set
+        {
+            if (characterData != null)
+                characterData.currentExp = value;
+        }
+    }
+
+    public bool UpdateExp(int point)
+    {
+        if (characterData != null)
+            return characterData.UpdateExp(point);
+
+        return false;
     }
     #endregion
 
@@ -219,7 +289,18 @@ public class CharacterStats : MonoBehaviour
 
         //update ui
         defener.UpdateHealthBarOnAttack?.Invoke(defener.CurrentHealth,defener.MaxHealth);
-        //TODO: update exp
+        //update exp
+        if (defener.CurrentHealth <= 0)
+        {
+            bool isLevelUp = attacker.UpdateExp(defener.KillPoint);
+            attacker.UpdateExpBarOnAttack?.Invoke(attacker.CurrentExp,attacker.BaseExp);
+            //如果升级了 那么更新血条 因为升级血就满了
+            if (isLevelUp)
+            {
+                attacker.UpdateHealthBarOnAttack?.Invoke(attacker.CurrentHealth,attacker.MaxHealth);
+                attacker.UpdateLevelOnAttack?.Invoke(attacker.CurrentLevel);
+            }
+        }
     }
 
     public void TakeDamage(int damage, CharacterStats defener)

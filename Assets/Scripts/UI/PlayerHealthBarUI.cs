@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,9 +10,13 @@ public class PlayerHealthBarUI : MonoBehaviour
 
     Image healthSlider;
 
+    Image expSlider;
+
     Text healthText;
 
     Text levelText;
+
+    Text expText;
 
     CharacterStats currentStats;
 
@@ -21,19 +26,28 @@ public class PlayerHealthBarUI : MonoBehaviour
         currentStats = Player.GetComponent<CharacterStats>();
 
         currentStats.UpdateHealthBarOnAttack += UpdatePlayerHealthBar;
+        currentStats.UpdateExpBarOnAttack += UpdatePlayerExpBar;
+        currentStats.UpdateLevelOnAttack += UpdatePlayerLevel;
     }
 
     void OnEnable()
     {
         healthSlider = gameObject.transform.GetChild(0).GetComponent<Image>();
         healthText = gameObject.transform.GetChild(1).GetComponent<Text>();
-        levelText = gameObject.transform.GetChild(1).GetComponent<Text>();
+        levelText = gameObject.transform.GetChild(2).GetComponent<Text>();
+        expSlider = gameObject.transform.GetChild(3).GetComponent<Image>();
+        expText = gameObject.transform.GetChild(4).GetComponent<Text>();
     }
 
     void Start()
     {
         healthSlider.fillAmount = 1f;
         healthText.text = currentStats.CurrentHealth + "/" + currentStats.MaxHealth;
+
+        expSlider.fillAmount = 0f;
+        expText.text = 0 + "/" + currentStats.BaseExp;
+
+        levelText.text = currentStats.CurrentLevel + "";
     }
 
     private void UpdatePlayerHealthBar(int currentHealth, int maxHealth)
@@ -42,5 +56,18 @@ public class PlayerHealthBarUI : MonoBehaviour
         healthSlider.fillAmount = sliderPercent;
 
         healthText.text = currentHealth + "/" + currentStats.MaxHealth;
+    }
+
+    private void UpdatePlayerExpBar(int currentExp, int baseExp)
+    {
+        float sliderPercent = (float)currentExp / baseExp;
+        expSlider.fillAmount = sliderPercent;
+
+        expText.text = currentExp + "/" + baseExp;
+    }
+
+    private void UpdatePlayerLevel(int level)
+    {
+        levelText.text = level + "";
     }
 }

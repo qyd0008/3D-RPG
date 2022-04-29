@@ -239,7 +239,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
                 coll.enabled = false;
                 // agent.enabled = false;
                 agent.radius = 0;
-                Destroy(gameObject, 2f);
+                Destroy(gameObject, 2.5f);
                 break;
         }
     }
@@ -312,7 +312,7 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     //Animation Event
     void Hit()
     {
-        if (attackTarget != null && transform.IsFacingTarget(attackTarget.transform))
+        if (attackTarget != null && transform.IsFacingTarget(attackTarget.transform) && !IsDeath())
         {
             var targetStats = attackTarget.GetComponent<CharacterStats>();
             characterStats.TakeDamage(characterStats,targetStats);

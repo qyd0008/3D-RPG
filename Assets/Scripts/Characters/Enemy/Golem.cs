@@ -14,7 +14,7 @@ public class Golem : EnemyController
     // Animation Event
     public void KickOff()
     {
-        if (attackTarget != null && transform.IsFacingTarget(attackTarget.transform))
+        if (attackTarget != null && transform.IsFacingTarget(attackTarget.transform) && !IsDeath())
         {
             transform.LookAt(attackTarget.transform);
 

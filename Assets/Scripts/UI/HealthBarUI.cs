@@ -59,7 +59,7 @@ public class HealthBarUI : MonoBehaviour
 
     private void UpdateHealthBar(int currentHealth, int maxHealth)
     {
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && UIbar.gameObject)
             Destroy(UIbar.gameObject);
 
         visibleLate = visibleTime;

@@ -10,7 +10,7 @@ public class Grunt : EnemyController
 
     public void KickOff()
     {
-        if (attackTarget != null)
+        if (attackTarget != null && !IsDeath())
         {
             transform.LookAt(attackTarget.transform);
 
