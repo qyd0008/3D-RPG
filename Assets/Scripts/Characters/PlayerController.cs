@@ -4,25 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Role
 {
-    private NavMeshAgent agent;
-    private Animator anim;
-    private CharacterStats characterStats;
-
     private GameObject attackTarget;
     private float lastAttackTime;
-
     private float stopDistance;
 
     bool isDead;
-    void Awake()
+    protected override void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
-        anim = GetComponent<Animator>();
-        characterStats = GetComponent<CharacterStats>();
+        base.Awake();
         stopDistance = agent.stoppingDistance;
-
         characterStats.CurrentHealth = characterStats.MaxHealth;
     }
 
@@ -116,5 +108,4 @@ public class PlayerController : MonoBehaviour
             characterStats.TakeDamage(characterStats,targetStats);
         }
     }
-
 }

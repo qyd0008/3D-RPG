@@ -34,6 +34,7 @@ public class Golem : EnemyController
     {
         var rock = Instantiate(rockPrefab,handPos.position,Quaternion.identity);
         rock.GetComponent<Rock>().target = attackTarget;
+        Destroy(rock,30);
     }
 
 }

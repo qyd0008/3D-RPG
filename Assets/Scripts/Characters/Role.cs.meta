@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 9d1043ce78355ff4fbde553267aa1427
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - showBleedingPos: {instanceID: 0}
+  - bleedingPrefab: {fileID: 8173525198022315381, guid: e0ce1c06b92f5384fa96fd4887bb95db,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

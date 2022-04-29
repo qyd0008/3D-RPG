@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3775239922217236826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6592559347577841316}
+  m_Layer: 0
+  m_Name: bleedingPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6592559347577841316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3775239922217236826}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.505, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6388201635679301574}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4902279089938911867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,6 +1513,7 @@ Transform:
   - {fileID: 6388201635679301236}
   - {fileID: 6388201635679301530}
   - {fileID: 4902279089938911866}
+  - {fileID: 6592559347577841316}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1539,6 +1570,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2dc8fb22e0a2804bba7bdcc8fee0ba8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showBleedingPos: {fileID: 6592559347577841316}
+  bleedingPrefab: {fileID: 8173525198022315381, guid: e0ce1c06b92f5384fa96fd4887bb95db,
+    type: 3}
 --- !u!136 &662136305223729623
 CapsuleCollider:
   m_ObjectHideFlags: 0

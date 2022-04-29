@@ -748,6 +748,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 661dbc5ce91c7d74a96454306e3d3955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showBleedingPos: {fileID: 1124394261288340494}
+  bleedingPrefab: {fileID: 8173525198022315381, guid: e0ce1c06b92f5384fa96fd4887bb95db,
+    type: 3}
   sightRadius: 10
   isGuard: 1
   lookAtTime: 0

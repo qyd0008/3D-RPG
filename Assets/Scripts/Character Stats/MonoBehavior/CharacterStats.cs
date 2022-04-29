@@ -8,6 +8,7 @@ public class CharacterStats : MonoBehaviour
     public event Action<int,int> UpdateHealthBarOnAttack;
     public event Action<int,int> UpdateExpBarOnAttack;
     public event Action<int> UpdateLevelOnAttack;
+    public event Action<int,bool> BleedingOnAttack;
     public CharacterData_SO templateData;
     public CharacterData_SO characterData;
     public AttackData_SO attackData;
@@ -284,6 +285,8 @@ public class CharacterStats : MonoBehaviour
         {
             defener.GetComponent<Animator>().SetTrigger("Hit");
         }
+        defener.BleedingOnAttack?.Invoke(damage,attacker.isCritical);
+
         Debug.Log(attacker.MyName + "发起攻击，伤害为:" + currentDamage + ",受击者" + defener.MyName + "防御：" + defener.CurrentDefence + ",实际造成伤害：" + damage);
         Debug.Log("受击者" + defener.MyName + "剩余血量：" + defener.CurrentHealth);
 
@@ -308,7 +311,9 @@ public class CharacterStats : MonoBehaviour
         int currentDamage = Mathf.Max(damage - defener.CurrentDefence, 0);
         defener.CurrentHealth = Mathf.Max(defener.CurrentHealth - currentDamage, 0);
 
-        Debug.Log("受到非怪物攻击 例如石头等，伤害为:" + damage + ",受击者" + defener.MyName + "防御：" + defener.CurrentDefence + ",实际造成伤害：" + currentDamage);
+        defener.BleedingOnAttack?.Invoke(currentDamage,false);
+
+        Debug.Log("受到攻击 例如石头等，伤害为:" + damage + ",受击者" + defener.MyName + "防御：" + defener.CurrentDefence + ",实际造成伤害：" + currentDamage);
         Debug.Log("受击者" + defener.MyName + "剩余血量：" + defener.CurrentHealth);
 
         // update ui

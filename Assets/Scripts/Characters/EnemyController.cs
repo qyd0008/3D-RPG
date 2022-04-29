@@ -6,12 +6,9 @@ using UnityEngine.AI;
 public enum EnemyStates { GUARD, PATROL, CHASE, DEAD }
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(CharacterStats))]
-public class EnemyController : MonoBehaviour, IEndGameObserver
+public class EnemyController : Role, IEndGameObserver
 {
     private EnemyStates enemyStates;
-    private NavMeshAgent agent;
-    private Animator anim;
-    protected CharacterStats characterStats;
     private Collider coll;
 
     [Header("Base Settings")]
@@ -37,13 +34,10 @@ public class EnemyController : MonoBehaviour, IEndGameObserver
     bool isFollow; //是否跟随player
     bool isDead; //是否死亡
     bool playerDead; //玩家是否死了
-    void Awake()
+    protected override void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
-        anim = GetComponent<Animator>();
-        characterStats = GetComponent<CharacterStats>();
+        base.Awake();
         coll = GetComponent<Collider>();
-
         speed = agent.speed;
         guardPos = transform.position;
         guardRotation = transform.rotation;

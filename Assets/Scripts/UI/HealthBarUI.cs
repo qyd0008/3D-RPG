@@ -40,7 +40,7 @@ public class HealthBarUI : MonoBehaviour
         foreach (Canvas canvas in FindObjectsOfType<Canvas>())
         {
             Debug.Log("canvas.name="+canvas.name);
-            if (canvas.name == "HealthBar Canvas")
+            if (canvas.name == "WorldSpace Canvas")
             {
                 UIbar = Instantiate(HealthUIPrefab,canvas.transform).transform;
                 healthSlider = UIbar.GetChild(0).GetComponent<Image>();
