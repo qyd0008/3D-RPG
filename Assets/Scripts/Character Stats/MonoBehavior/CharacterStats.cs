@@ -284,6 +284,10 @@ public class CharacterStats : MonoBehaviour
         if (attacker.isCritical)
         {
             defener.GetComponent<Animator>().SetTrigger("Hit");
+            if (defener.MyName == "DogKnight")
+            {
+                AudioManager.Instance.PlaySound("Sound/beAttacked");
+            }
         }
         defener.BleedingOnAttack?.Invoke(damage,attacker.isCritical);
 

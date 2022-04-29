@@ -15,7 +15,6 @@ public class PlayerController : Role
     {
         base.Awake();
         stopDistance = agent.stoppingDistance;
-        characterStats.CurrentHealth = characterStats.MaxHealth;
     }
 
     void Start()
@@ -106,6 +105,7 @@ public class PlayerController : Role
         {
             var targetStats = attackTarget.GetComponent<CharacterStats>();
             characterStats.TakeDamage(characterStats,targetStats);
+            AudioManager.Instance.PlaySound("Sound/attack");
         }
     }
 }

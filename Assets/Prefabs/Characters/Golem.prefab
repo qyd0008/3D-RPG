@@ -756,8 +756,9 @@ MonoBehaviour:
   lookAtTime: 0
   patrolRange: 0
   kickForce: 30
-  rockPrefab: {fileID: 0}
-  handPos: {fileID: 0}
+  rockPrefab: {fileID: 1023299093514857187, guid: 4912a262b7152f14583efdb853857105,
+    type: 3}
+  handPos: {fileID: 7798517644829876139}
 --- !u!114 &6604349590030173357
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -41,11 +41,11 @@ public class PlayerHealthBarUI : MonoBehaviour
 
     void Start()
     {
-        healthSlider.fillAmount = 1f;
+        healthSlider.fillAmount = (float)currentStats.CurrentHealth / currentStats.MaxHealth;;
         healthText.text = currentStats.CurrentHealth + "/" + currentStats.MaxHealth;
 
-        expSlider.fillAmount = 0f;
-        expText.text = 0 + "/" + currentStats.BaseExp;
+        expSlider.fillAmount = (float)currentStats.CurrentExp / currentStats.BaseExp;
+        expText.text = currentStats.CurrentExp + "/" + currentStats.BaseExp;
 
         levelText.text = currentStats.CurrentLevel + "";
     }
